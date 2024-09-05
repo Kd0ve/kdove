@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/styles.css">
+<title>Hello World</title>
+<script>
+    // this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
+                        
+let username = "kdove"; // UNLESS YOU HAVE A CUSTOM DOMAIN, Put your Nekoweb username here as a string
+
+if (username === undefined && window.location.href.includes(".nekoweb.org")) {
+  // if we know the site has a subdomain, we can use that as the username instead
+  username = window.location.host.split(".")[0];
+}
+
+const getStats = async () => {
+    const request = await fetch(`https://nekoweb.org/api/site/info/${username}`);
+    const json = await request.json();
+
+    const updated = new Date(json.updated_at).toLocaleDateString(); // Formats Last Updated text
+    const created = new Date(json.created_at).toLocaleDateString(); // Formats Creation Date text
+
+    document.getElementById("created").innerHTML = `<em>Created</em>: ${created}`;
+    document.getElementById("updated").innerHTML = `<em>Updated</em>: ${updated}`;
+    document.getElementById("visitors").innerHTML = `<em>Visits</em>: ${json.views}`;
+    document.getElementById("followers").innerHTML = `<em>Followers</em>: ${json.followers}`;
+};
+getStats();
+  </script>
+</head>
+<body>
+
+    <div id="container">
+        <div id="headerArea">
+    <div id="topbar"><marquee direction="left">WELCOME TO MY BRAIN</marquee></div>
+    <div id="header"><h1 style="text-align: center; color: white; font-size: 50px; padding-top: 10px;">kove's home</h1></div>
+    <nav id="navbar">
+        <ul>
+            <li><a href="/">home</a></li>
+            
+            <li><a href="/pages/blog/">blog</a></li>
+            
+            <li><a href="/pages/about/">about</a></li>
+            
+        </ul>
+    </nav>
+</div>
+        <div id="flex">
+            
+            <main style="background-color: black;">
+                
+                <h2>First post</h2>
+<p>This is my first post! I'm excited for this new page because I finally seemed to manage to figure out a way to make a nice looking website. I was trying and trying forever to find something good, but could never seem to really find a good thing that stuck. If you want to learn about who I am, visit my <a href="http://kd0ve.github.io/blog/about">about</a> page. I'll go into more detail on who I am and why I'm even making this thing.</p>
+<p>Expect a lot of writeups. I will probably make a seperate section for just random notes and stuff, but we will see if that happens.</p>
+
+    
+            </main>   
+            <aside id="rightSidebar" style="margin-left: 10px;">
+    <div style="text-align: center; padding: 0;" class="box">
+        <h2>chat</h2>
+        <iframe src="https://www3.cbox.ws/box/?boxid=3540576&boxtag=luCzlt" style="margin-left: 10px;margin-bottom: 10px;padding: 0; border-radius: 1em; width: 10.5em;" width="100%" height="200em" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 210px">
+        <h3>stats</h3>
+        <p id="created"></p>
+        <p id="updated"></p>
+        <p id="visitors"></p>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 140px;">
+        <h3>to do</h3>
+        <ul style="padding-left: 10px; margin-top: 5px;">
+            <li id="item">make a website updates section</li>
+            <li id="item">actually make stuff on the about page :)</li>
+            <li id="item">make links and yellow text glowy</li>
+            <li id="item"><s>add buttons/make my own button (add buttons of people who inspired site/helped)</s></li>
+        </ul>
+    </div>
+</aside> 
+        </div>
+        <footer id="footer" style="margin-top: 10px;">kdove | &#169;copyright 2024</footer>
+    </div>
+</body>
+</html>

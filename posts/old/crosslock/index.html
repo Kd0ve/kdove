@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/styles.css">
+<title>Crosslock</title>
+<script>
+    // this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
+                        
+let username = "kdove"; // UNLESS YOU HAVE A CUSTOM DOMAIN, Put your Nekoweb username here as a string
+
+if (username === undefined && window.location.href.includes(".nekoweb.org")) {
+  // if we know the site has a subdomain, we can use that as the username instead
+  username = window.location.host.split(".")[0];
+}
+
+const getStats = async () => {
+    const request = await fetch(`https://nekoweb.org/api/site/info/${username}`);
+    const json = await request.json();
+
+    const updated = new Date(json.updated_at).toLocaleDateString(); // Formats Last Updated text
+    const created = new Date(json.created_at).toLocaleDateString(); // Formats Creation Date text
+
+    document.getElementById("created").innerHTML = `<em>Created</em>: ${created}`;
+    document.getElementById("updated").innerHTML = `<em>Updated</em>: ${updated}`;
+    document.getElementById("visitors").innerHTML = `<em>Visits</em>: ${json.views}`;
+    document.getElementById("followers").innerHTML = `<em>Followers</em>: ${json.followers}`;
+};
+getStats();
+  </script>
+</head>
+<body>
+
+    <div id="container">
+        <div id="headerArea">
+    <div id="topbar"><marquee direction="left">WELCOME TO MY BRAIN</marquee></div>
+    <div id="header"><h1 style="text-align: center; color: white; font-size: 50px; padding-top: 10px;">kove's home</h1></div>
+    <nav id="navbar">
+        <ul>
+            <li><a href="/">home</a></li>
+            
+            <li><a href="/pages/blog/">blog</a></li>
+            
+            <li><a href="/pages/about/">about</a></li>
+            
+        </ul>
+    </nav>
+</div>
+        <div id="flex">
+            
+            <main style="background-color: black;">
+                
+                <h2><u>Intro</u></h2>
+<p>So, I need to be vaguer about this write-up, but I wanted to put out something regarding a recent competition I did. It was a lot of fun. How I did was significantly better than it had been. I went from getting 717th place to 244th place. So that means I met my goal this year!! Anyway, I'm going to do a quick write-up of one of their sections.</p>
+<p>This section was under their &quot;Enumeration and Exploitation&quot; category. It was the medium challenge and was indeed quite the challenge. I want to write about this one because I had to write some Python scripts for it, which I found to be a lot of fun.</p>
+<h2><u>Methodology</u></h2>
+<p>This one involved a .dll file that we had to find the flag within. The whole point was to try to &quot;unlock&quot; the program. Figure out how to view the code and get into the thing. This was a whole process not only to do but to figure out <em>how</em> to do it.</p>
+<h3>How?</h3>
+<p>My first thought was to try to run it, but I was worried about running a .dll on my device, for obvious reasons (still tried to though... do not recommend it... nothing happened it's just a stupid idea). So, after going to other problems for a while, I came back to this one. After looking up &quot;how to open .dll&quot; and things like that, I eventually figured out that you needed to use a decompiler to look at the .dll code. So, I started looking up decompilers and eventually found a couple of opens. The main one I used was a JetBrains based decompiler called <a href="https://www.jetbrains.com/decompiler/">dotPeek</a>.</p>
+<h3>Taking Action</h3>
+<p>Once I got all that up and running, I opened the .dll in the decompiler and started digging around. This is what I saw:</p>
+<p><img src="decompiler.png" alt=".dll in DotPeek decompiler"></p>
+<p>I then clicked the dropdown next to the crosslock app and one function <em>immediately</em> stuck out to me.</p>
+<p><img src="securelock.png" alt="Securelock function"></p>
+<p>So, I opened it up, and, lo and behold, there was everything, although not exactly in the format I wanted. Firstly, this was an AES encrypted key, so I was provided with a key and an IV. On top of that, I was given the encrypted flag, however, it was... well... encrypted. So I had to do a little messing around...</p>
+<h3>The Scripts</h3>
+<p>First, the key, IV, and secret were given in bytes. So I had to figure out how to get bytes into human-readable text. I found this solution to that:</p>
+<pre><code class="language-python">&gt;&gt;&gt;bytes = [&lt;key&gt;] 
+&gt;&gt;&gt;&quot;&quot;.join(map(chr, bytes))
+</code></pre>
+<p>Which outputs the key for me. It was pretty easy to notice without converting the IV, but the key and IV were the same. I could tell due to the bytes being the same. So I didn't bother to go through the whole process with both. Once I had that, I needed to figure out how to get the encrypted flag.</p>
+<p>I stumbled around a while trying to figure out how to best output this stuff as putting it into the same script I had for the key just output a garbled mess. So, I made a guess and tried to make a script that outputs hex for me. This is what I came up with:</p>
+<pre><code class="language-python">&gt;&gt;&gt;bytes = [&lt;secret&gt;]
+&gt;&gt;&gt;''.join(format(x, '02x') for x in bytes)
+</code></pre>
+<h3>Finding The Flag</h3>
+<p>This gave me the flag in hex. The reason it was so garbled was that it was encrypted with AES, so I took the hex, went into <a href="https://gchq.github.io/CyberChef/#recipe=AES_Decrypt(%7B'option':'Hex','string':''%7D,%7B'option':'Hex','string':''%7D,'CBC','Hex','Raw',%7B'option':'Hex','string':''%7D,%7B'option':'Hex','string':''%7D)">Cyberchef</a> and put in the AES Decrypt option (which that link should've led you to). From there, I put the hex in, input the key and IV, changed the format of the key and IV to UTF8, and baked! And that's how I got the flag.</p>
+<hr>
+<p>If you want to see more writeups from me, feel free to comment, or send me a message either of the ways I have available in my <a href="http://kd0ve.github.io/about/">about</a>. Let me know if you'd like more!</p>
+<hr>
+
+    
+            </main>   
+            <aside id="rightSidebar" style="margin-left: 10px;">
+    <div style="text-align: center; padding: 0;" class="box">
+        <h2>chat</h2>
+        <iframe src="https://www3.cbox.ws/box/?boxid=3540576&boxtag=luCzlt" style="margin-left: 10px;margin-bottom: 10px;padding: 0; border-radius: 1em; width: 10.5em;" width="100%" height="200em" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 210px">
+        <h3>stats</h3>
+        <p id="created"></p>
+        <p id="updated"></p>
+        <p id="visitors"></p>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 140px;">
+        <h3>to do</h3>
+        <ul style="padding-left: 10px; margin-top: 5px;">
+            <li id="item">make a website updates section</li>
+            <li id="item">actually make stuff on the about page :)</li>
+            <li id="item">make links and yellow text glowy</li>
+            <li id="item"><s>add buttons/make my own button (add buttons of people who inspired site/helped)</s></li>
+        </ul>
+    </div>
+</aside> 
+        </div>
+        <footer id="footer" style="margin-top: 10px;">kdove | &#169;copyright 2024</footer>
+    </div>
+</body>
+</html>

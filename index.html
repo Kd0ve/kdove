@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/styles.css">
+<title></title>
+<script>
+    // this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
+                        
+let username = "kdove"; // UNLESS YOU HAVE A CUSTOM DOMAIN, Put your Nekoweb username here as a string
+
+if (username === undefined && window.location.href.includes(".nekoweb.org")) {
+  // if we know the site has a subdomain, we can use that as the username instead
+  username = window.location.host.split(".")[0];
+}
+
+const getStats = async () => {
+    const request = await fetch(`https://nekoweb.org/api/site/info/${username}`);
+    const json = await request.json();
+
+    const updated = new Date(json.updated_at).toLocaleDateString(); // Formats Last Updated text
+    const created = new Date(json.created_at).toLocaleDateString(); // Formats Creation Date text
+
+    document.getElementById("created").innerHTML = `<em>Created</em>: ${created}`;
+    document.getElementById("updated").innerHTML = `<em>Updated</em>: ${updated}`;
+    document.getElementById("visitors").innerHTML = `<em>Visits</em>: ${json.views}`;
+    document.getElementById("followers").innerHTML = `<em>Followers</em>: ${json.followers}`;
+};
+getStats();
+  </script>
+</head>
+<body>
+
+    <div id="container">
+
+        <div id="headerArea">
+    <div id="topbar"><marquee direction="left">WELCOME TO MY BRAIN</marquee></div>
+    <div id="header"><h1 style="text-align: center; color: white; font-size: 50px; padding-top: 10px;">kove's home</h1></div>
+    <nav id="navbar">
+        <ul>
+            <li><a href="/">home</a></li>
+            
+            <li><a href="/pages/blog/">blog</a></li>
+            
+            <li><a href="/pages/about/">about</a></li>
+            
+        </ul>
+    </nav>
+</div>
+        <div id="flex">
+            
+            <main>
+                
+                
+<div class="content" style="padding: 10px;">
+    <h1 style="text-align: center;">what is this blog?</h1>
+    <p>this is a place for me to experiment with web dev, write my blog, and generally just mess around online.</p>
+    <p>i don't entirely know what i'm doing yet, at the moment this place is a wip... but let me know what you think! My guestbook should be somewhere, and I've got a little chat going too :)</p>
+</div>
+<div id="flex" style="margin-top: 20px;">
+    <div class="content" style="padding: 10px; height: 210px; margin-right: 10px;">
+        <h2>updates</h2>
+        <hr style="padding-bottom: 0;">
+        <h3 style="padding-top: 10px; margin: 0;">9/5/24 @ 6:18pm</h3>
+        <p style="padding: 0; margin: 0;">> okay i added all the things now imma take a break (probably)</p>
+        <h3 style="padding-top: 10px; margin: 0;">9/5/24</h3>
+        <p style="padding: 0; margin: 0;">> i've added some... spice :3</p>
+        <h3 style="padding-top: 10px; margin: 0;">9/4/24 @ 11:24pm</h3>
+        <p style="padding: 0; margin: 0;">> i am way too tired to make more so imma slep but keep track of todo</p>
+        <h3 style="padding-top: 10px; margin: 0;">9/4/24</h3>
+        <p style="padding: 0; margin: 0;">> actually making first update!</p>
+    </div>
+    <div class="content" style="padding: 10px;  height: 210px; text-align: center;">
+        <h1 style="text-decoration: underline;">sign my guestbook?</h1>
+        <a href="/pages/guestbook/">GO HERE</a>
+    </div>
+</div>
+<div class="content" style="padding: 10px; margin-top: 20px;">
+    <h1 style="padding: 0; margin: 0; text-decoration: underline; text-align: center;">buttons</h1>
+    <h2 style="padding: 5px 0 0 0; margin: 0;">my first button</h2>
+    <p style="padding: 0; margin: 0;">(I made it myself in paint:3)</p>
+    <div id="flex">
+        <a href="https://kdove.nekoweb.org/"><img src="assets/kdovebuttonpurple.gif" alt="kdove's home" width="88px" height="31px"></a>
+        <textarea><a href="https://kdove.nekoweb.org/"><img src="https://max.nekoweb.org/assets/kdovebuttonpurple.gif" alt="kdove's home"></a>
+        </textarea>
+    </div> 
+
+</div>
+
+    
+            </main>   
+            <aside id="rightSidebar" style="margin-left: 10px;">
+    <div style="text-align: center; padding: 0;" class="box">
+        <h2>chat</h2>
+        <iframe src="https://www3.cbox.ws/box/?boxid=3540576&boxtag=luCzlt" style="margin-left: 10px;margin-bottom: 10px;padding: 0; border-radius: 1em; width: 10.5em;" width="100%" height="200em" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 210px">
+        <h3>stats</h3>
+        <p id="created"></p>
+        <p id="updated"></p>
+        <p id="visitors"></p>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 140px;">
+        <h3>to do</h3>
+        <ul style="padding-left: 10px; margin-top: 5px;">
+            <li id="item">make a website updates section</li>
+            <li id="item">actually make stuff on the about page :)</li>
+            <li id="item">make links and yellow text glowy</li>
+            <li id="item"><s>add buttons/make my own button (add buttons of people who inspired site/helped)</s></li>
+        </ul>
+    </div>
+</aside>
+        </div>
+        <footer id="footer" style="margin-top: 10px;">kdove | &#169;copyright 2024</footer>
+    </div>
+</body>
+</html>

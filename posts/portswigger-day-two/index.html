@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/styles.css">
+<title>Portswigger Academy Day Two</title>
+<script>
+    // this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
+                        
+let username = "kdove"; // UNLESS YOU HAVE A CUSTOM DOMAIN, Put your Nekoweb username here as a string
+
+if (username === undefined && window.location.href.includes(".nekoweb.org")) {
+  // if we know the site has a subdomain, we can use that as the username instead
+  username = window.location.host.split(".")[0];
+}
+
+const getStats = async () => {
+    const request = await fetch(`https://nekoweb.org/api/site/info/${username}`);
+    const json = await request.json();
+
+    const updated = new Date(json.updated_at).toLocaleDateString(); // Formats Last Updated text
+    const created = new Date(json.created_at).toLocaleDateString(); // Formats Creation Date text
+
+    document.getElementById("created").innerHTML = `<em>Created</em>: ${created}`;
+    document.getElementById("updated").innerHTML = `<em>Updated</em>: ${updated}`;
+    document.getElementById("visitors").innerHTML = `<em>Visits</em>: ${json.views}`;
+    document.getElementById("followers").innerHTML = `<em>Followers</em>: ${json.followers}`;
+};
+getStats();
+  </script>
+</head>
+<body>
+
+    <div id="container">
+        <div id="headerArea">
+            <div id="header"><h1 style="text-align: center; color: white; font-size: 50px; padding-top: 10px;">kove's home</h1></div>
+            <nav id="navbar">
+                <ul>
+                    <li><a href="/">home</a></li>
+                    
+                    <li><a href="/pages/blog/">blog</a></li>
+                    
+                    <li><a href="/pages/about/">about</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    
+        <div id="flex">
+            
+            <main>
+                
+                <hr>
+<p>Today is my second day going through the PortSwigger Academy learning paths! We're continuing with the Server-side Vulnerabilities pathway, where we will finish up with OS Command Injection and SQL Injection.</p>
+<hr>
+<h2>OS Command Injection</h2>
+<p>This is a shell attack that allows the execution of OS commands, which can be used to fully compromise a system running the application at hand.</p>
+<p>It also gives an avenue for potentially changing internal permissions, allowing for higher privileges within the system than you may have initially been able to gain access to.</p>
+<h3>Useful Commands</h3>
+<p>Here are some useful commands to execute to help identify there being an OS command injection vulnerability:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Purpose of command</strong></th>
+<th><strong>Linux</strong></th>
+<th><strong>Windows</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name of current user</td>
+<td><code>whoami</code></td>
+<td><code>whoami</code></td>
+</tr>
+<tr>
+<td>Operating system</td>
+<td><code>uname -a</code></td>
+<td><code>ver</code></td>
+</tr>
+<tr>
+<td>Network configuration</td>
+<td><code>ifconfig</code></td>
+<td><code>ipconfig /all</code></td>
+</tr>
+<tr>
+<td>Network connections</td>
+<td><code>netstat -an</code></td>
+<td><code>netstat -an</code></td>
+</tr>
+<tr>
+<td>Running processes</td>
+<td><code>ps -ef</code></td>
+<td><code>tasklist</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Injecting OS Commands</h3>
+<p>Being able to execute these is like an SQL injection. In the URL, often a parameter will be established to be set to an input variable.</p>
+<p>You can exploit this by doing something like <code>&amp; echo aiwefwlguh &amp;</code> which will make the system execute the <code>echo</code> command and echo the specified string.</p>
+<p>This is a good way to test if OS Command Injection is a possible vulnerability that can be exploited.</p>
+<h3>OS Command Injection, Simple Case</h3>
+<p>This lab had us do something that wasn't shown in the instructions beforehand. Rather than doing something like <code>&amp; whoami &amp;</code>, the lab wanted the input to be <code>| whoami</code> put after the input storeID.</p>
+<p>I'm assuming they wanted us to look up other ways to do the injection, but it's kind of weird they show one way to do the injection method, but have us physically do a different method.</p>
+<p>Anyway, the result looked like <code>productId=1&amp;storeId=1 | whoami</code> which outputs the name of the user.</p>
+<hr>
+<h2>SQL Injection</h2>
+<p>I referred to this earlier because I'm relatively familiar with SQL injections. This type of vulnerability takes advantage of a website using an SQL database where input isn't filtered.</p>
+<p>If there is an input form where the results are passed to an SQL query, there are times when you can put in an SQL command with some slight character manipulation, and it will pass the query as an actual SQL query.</p>
+<p>According to the course material, SQL injections can allow for DDoS attacks, which I was not aware of and find very interesting.</p>
+<h3>Detect SQL Injection</h3>
+<p>According to Portswigger, the following are methods that can be used to test for the potential of an SQL injection being possible:</p>
+<blockquote>
+<ul>
+<li>The single quote character ' and look for errors or other anomalies.</li>
+<li>Some SQL-specific syntax that evaluates the base (original) value of the entry point, and to a different value, and looks for systematic differences in the application responses.</li>
+<li>Boolean conditions such as OR 1=1 and OR 1=2 and look for differences in the application's responses.</li>
+<li>Payloads designed to trigger time delays when executed within a SQL query and look for differences in the time taken to respond.</li>
+<li>OAST payloads are designed to trigger an out-of-band network interaction when executed within a SQL query and monitor any resulting interactions.</li>
+</ul>
+</blockquote>
+<h3>Retrieving Hidden Data</h3>
+<p>Doing some tests such as '+OR+1=1 at the end of a URL performing an SQL query can result in the dropping of an entire database, even hidden elements.</p>
+<p>Portswigger gives the following warning, which I think is important to remember:</p>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>Take care when injecting the condition OR 1=1 into an SQL query. Even if it appears to be harmless in the context you're injecting into, it's common for applications to use data from a single request in multiple different queries. If your condition reaches an UPDATE or DELETE statement, for example, it can result in an accidental loss of data.</p>
+</blockquote>
+<h3>SQL Injection Lab</h3>
+<p>This one was straightforward. You just did the '+OR+1=1-- that was talked about earlier in the learning and it dropped all the products.</p>
+<h3>Subverting Application Logic</h3>
+<p>This one is cool. You can try to subvert the SQL logic that is written out by inserting certain test characters into certain fields.</p>
+<p>For example, if you wanted to log in as a user without needing to provide a password, and the SQL logic looked like <code>SELECT * FROM users WHERE username = 'user' AND password = 'pass'</code> if you just put in <code>user'--</code> into the username field, it would allow you to bypass the password check.</p>
+<h3>Subverting Application Logic Lab</h3>
+<p>I got kind of confused here because I thought you had to leave the password field blank, but when you would do that the submission thing would freak out.</p>
+<p>What you had to do was input a password and then alter the username to have <code>'--</code> at the end, which would then make the password field blank and not necessary to log in.</p>
+<hr>
+<p>That's all for day two! And that is the end of the Server-side Exploitation path. Next time, I'll be moving onto the API testing pathway, where I'll learn about how to exploit API.</p>
+<p>Thank you all for reading, and I hope to continue providing my notes as I go along on these learning paths! They've been informative so far, and I feel like I am learning a lot.</p>
+
+    
+            </main>   
+            <aside id="rightSidebar" style="margin-left: 10px;">
+                <div class="box">
+                    <h2>chat</h2>
+                    <iframe src="https://www3.cbox.ws/box/?boxid=3540576&boxtag=luCzlt" width="100%" height="200em" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+                </div>
+                <div class="box" style="margin-top: 10px; height: 210px">
+                    <h3>stats</h3>
+                    <p id="created"></p>
+                    <p id="updated"></p>
+                    <p id="visitors"></p>
+                </div>
+            </aside>
+        </div>
+        <footer id="footer" style="margin-top: 10px;">kdove | &#169;copyright 2024</footer>
+    </div>
+</body>
+</html>
