@@ -32,19 +32,28 @@
     font-weight: bold;
 }
 
+html, body {
+    min-height: 100% !important;
+    height: 100%;
+}
+
 body {
     font-family: "ByteBounce", "Lucida Console", monospace, Monaco; 
     font-size: 20px;
     margin: 0;
-    background-image: url('../assets/purpskybg.jpg');
+    padding: 0;
+    background-image: url('../assets/stars5.gif');
     background-repeat: repeat;
     /* you can delete the line below if you'd prefer to not use an image */
-    background-size: 65px;
     color: #fceaff;
 }
 
 * {
     box-sizing: border-box;
+}
+
+a {
+    text-shadow: #EEEE00 0 0 5px;
 }
 
 a:hover {
@@ -53,16 +62,22 @@ a:hover {
 }
 
 #container {
-    max-width: 900px;
+    max-width: 1000px;
     /* this is the width of your layout! */
     /* if you change the above value, scroll to the bottom
 and change the media query according to the comment! */
     margin: 0 auto;
     /* this centers the entire page */
+    background-color:#43256E;
+    padding: 0 10px;
+    min-height: 100vh;
+    border-left: 2px dotted white;
+    border-right: 2px dotted white;
 }
 
 #container a {
     color: var(--link-color);
+    text-shadow: 0.5em;
     font-weight: bold;
     /* if you want to remove the underline
 you can add a line below here that says:
@@ -109,7 +124,8 @@ you can add them directly to the <div id="header"></div> element! */
 
 /* navigation links*/
 #navbar li a {
-    color: var(--link-color);;
+    color: var(--link-color);
+    text-shadow: 5% 5%;
     /* navbar text color */
     font-weight: 800;
     text-decoration: none;
@@ -215,6 +231,7 @@ sub {
     width: 100%;
     height: 30px;
     padding: 10px;
+    margin: 0;
     font-size: smaller;
     background-color: #13092D;
 }
