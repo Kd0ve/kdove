@@ -140,10 +140,7 @@ main {
     flex: 1;
     padding: 20px;
     order: 2;
-    overflow-y: scroll;
-    height: 640px;
     background-color:#00000073;
-    scrollbar-color: black;
 }
 
 .content {
