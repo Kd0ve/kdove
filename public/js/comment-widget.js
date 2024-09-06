@@ -474,12 +474,14 @@ function getMonthNum(month) {
     return num;
 }
 
+
+
 // Handle making replies
 const link = document.createElement('a');
 link.href = '#c_inputDiv';
 function openReply(id) {
     if (c_replyingText.style.display == 'none') {
-        c_replyingText.innerHTML = s_replyingText + ` ${id.split('|--|')[0]}...`;
+        c_replyingText.innerText = s_replyingText + ` ${id.split('|--|')[0]}...`;
         c_replyInput.value = id;
         c_replyingText.style.display = 'block';
     } else {
