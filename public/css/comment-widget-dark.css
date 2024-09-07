@@ -132,13 +132,8 @@
 
 .c-inputWrapper {
     display: block;
-    text-align: right;
+    text-align: left;
 }
-
-.c-label {
-    text-align: right;
-}
-
 .c-input {
     padding: 4px;
     color: black;
@@ -148,11 +143,16 @@
 }
 .c-input:focus {border: 1px solid #B766FF;}
 
+#c_textWrapper {
+    text-align: center;
+}
+
 .c-textInput {
     width: calc(100% - 10px);
     max-width: 900px;
     resize: none;
 }
+
 #c_submitButton {
     display: block; 
     margin-left: auto; 

@@ -54,7 +54,7 @@ const s_filteredWords = [ // Add words to filter by putting them in quotes and s
 const s_widgetTitle = 'Leave a comment!';
 const s_nameFieldLabel = 'Name';
 const s_websiteFieldLabel = 'Website (Optional)';
-const s_textFieldLabel = '';
+const s_textFieldLabel = 'Tell me what\'s on your mind :)';
 const s_submitButtonLabel = 'Submit';
 const s_loadingText = 'Loading comments...';
 const s_noCommentsText = 'No comments yet!';
@@ -81,6 +81,8 @@ c_cssLink.type = 'text/css';
 c_cssLink.rel = 'stylesheet';
 c_cssLink.href = s_stylePath;
 document.getElementsByTagName('head')[0].appendChild(c_cssLink);
+
+// HTML Form
 
 // HTML Form
 const v_mainHtml = `
@@ -230,7 +232,7 @@ function getComments() {
 
         // Check for empty comments before displaying to page
         if (comments.length == 0 || Object.keys(comments[0]).length < 2) { // Once again, Google Sheets can be weird
-            c_container.innerHTML = s_noCommentsText;
+            c_container.innerText = s_noCommentsText;
         } else {displayComments(comments)}
         
         c_submitButton.disabled = false // Now that everything is done, re-enable the submit button
@@ -485,7 +487,7 @@ function openReply(id) {
         c_replyInput.value = id;
         c_replyingText.style.display = 'block';
     } else {
-        c_replyingText.innerHTML = '';
+        c_replyingText.innerText = '';
         c_replyInput.value = '';
         c_replyingText.style.display = 'none';
     }
