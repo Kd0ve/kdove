@@ -32,6 +32,7 @@
     font-weight: bold;
 }
 
+
 html, body {
     min-height: 100% !important;
     height: 100%;
@@ -68,7 +69,7 @@ a:hover {
 and change the media query according to the comment! */
     margin: 0 auto;
     /* this centers the entire page */
-    background-color:#43256E;
+    background:#43256E;
     padding: 0 10px;
     min-height: 100vh;
     border-left: 3px dashed white;
@@ -158,6 +159,7 @@ main {
     order: 2;
     background-color:#00000073;
 }
+
 
 .content {
     border: 1px solid white;
@@ -321,8 +323,8 @@ td {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: white;
-    border: white 1px solid;
+    background: rgb(255, 255, 255);
+    border: rgb(0, 0, 0) 1px solid;
     border-radius: 1em;
 }
 
@@ -357,4 +359,16 @@ feel free to play around with the order!
 }
 
 
-
+.crt::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}
