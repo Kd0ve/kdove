@@ -19,11 +19,3 @@ tag: page
 {% endfor %}
 
 <hr>
-
-<h1 style="margin-bottom:0;">Old blog Posts</h1>
-<sub>Before Sept. 2024</sub>
-{% for old in collections.old %}
-<ul>
-    <li><a href="{{ old.url }}">{{ old.data.title }}</a></li>
-</ul>
-{% endfor %}

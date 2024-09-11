@@ -28,7 +28,13 @@ const getStats = async () => {
     document.getElementById("followers").innerHTML = `<em>Followers</em>: ${json.followers}`;
 };
 getStats();
-  </script>
+</script>
+<script src="https://chattable.neocities.org/scripts/main.min.js"></script>
+<script>
+	chattable.initialize({
+		stylesheet : "../css/chattable.css",
+	});
+</script>
 </head>
 <body>
 
@@ -41,20 +47,38 @@ getStats();
         <ul>
             <li><a href="/">home</a></li>
             
-            <li><a href="/pages/blog/">blog</a></li>
-            
             <li><a href="/pages/about/">about</a></li>
+            
+            <li><a href="/pages/blog/">blog</a></li>
             
         </ul>
     </nav>
 </div>
     <div id="flex">
-        <aside id="leftSidebar" style="margin-right: 10px; width: 20em">
-    <div style="padding: 10px;" class="box">
+        <aside id="leftSidebar" style="margin-right: 10px; width: 15em">
+    <div style="padding: 10px;" id="mini-blog" class="box">
         <h2 style="text-align: center;">Mini Blog</h2>
         <hr>
-        <div>
-            <p>> 9/7/24 @ 8:50pm</p>
+        <details open>
+            <summary> 
+                9/11/24 @ 8:50pm
+            </summary>
+            <p>
+                So I finally got back to working on this. I took a break and got done what I needed to. Now I can sorta just focus on this for a little bit.
+                <br><br>
+                Well, not really as much as I'd like. There are still other things I need to focus on. But my god have I been out of it. I don't even know what's going on.
+                <br><br>
+                I mean, I think I have an idea. I was having issues with my adhd medication. It stopped working and was just making be feel numb and dead all the time. It was doing more damage than helping in any way.
+                <br><br>
+                I tried talking with my doctor, but idk. I might make a full blog post ranting about all this. I also removed the old blog section cause I want to keep my old blog posts or more professional guide blog posts on my other website and just add new ones here.
+                <br><br>
+                Anyway, I think imma make a more full blog post talking about everything going on and how I've been feeling, cause it's kinda been a pain. Signing off ~
+            </p>
+        </details>
+        <details>
+            <summary> 
+                9/7/24 @ 8:50pm
+            </summary>
             <p>
                 Good news, I got almost everything for the end of this term done! I was able to focus for a little bit. But it feels like the days just disappear lately. I really want to start waking up sooner.
                 <br><br>
@@ -63,10 +87,13 @@ getStats();
                 But I want a mini blog for this sidebar section of the website. I heard of smol.pub, but I'm not sure if that's really for what I want. Cause I want to make tiny little statuses like these where I talk to myself, so it wouldn't really be whole entire blog posts. Just little blurbs? idk lol.
                 <br><br>
                 Anyway, I just found Spacehey and have been having a lot of fun with it. I treid to theme it after my website a bit. But there's a lot of people on there with a lot of stuff going on so it's a bit overwhelming idk. I will see how I like it.
+
             </p>
-        </div>
-        <div hidden>
-            <p>> 9/7/2024 @ 2:00pm</p>
+        </details>
+        <details>
+            <summary> 
+                9/7/24 @ 2:00pm
+            </summary>
             <p>
                 I told myself I wouldn't hyperfixate on this today and I'd get work done, but here we are lol.
                 <br><br>
@@ -76,9 +103,9 @@ getStats();
                 <br><br>
                 There's still a lot I need to do, but I really do have to do at least some sort of work today. I really hope I can get myself to focus on what I need to do. Signing off ~
             </p>
-        </div>
-        <div hidden>
-            <p>> 9/7/2024 @ like midnight</p>
+        </details>
+        <details>
+            <summary>9/7/2024 @ like midnight</summary>
             <p>
                 Adding a sidebar here. I don't think this is going to be what it stays as, but for now this will be my braindump spot. The updates section will be just little bits when I actually change something on the site. Maybe change it over to taking github pushes? I'll have to figure that out.
                 <br><br>
@@ -88,11 +115,12 @@ getStats();
                 <br><br>
                 It's pretty late right now and I got literally nothing done today other than this :) I'm going to try to turn my brain off. Signing off ~
             </p>
-        </div>
+        </details>
     </div>
     <div style="padding: 10px; height: 200px;;overflow-y: scroll; scrollbar-color: rgb(255, 255, 255);" class="box">
         <h2 style="text-align: center;">Cool Sites</h2>
         <hr>
+        <a href="https://nekoweb.org/"><img src="https://nekoweb.org/assets/buttons/button5.gif" style="width: 88px; height: 31px;"></a>
         <a href="https://virtualobserver.moe/"><img src="https://virtualobserver.moe/images/sitebutton.png"style="width: 88px; height: 31px;"></a>
         <a href="https://bekianee.nekoweb.org" target="_blank"><img src="https://bekianee.nekoweb.org/Images/Bekianee_button.png" style="width: 88px; height: 31px;"></a>
         <a href="https://alheli.nekoweb.org/"><img src="https://alheli.nekoweb.org/images/alheli-button.png"style="width: 88px; height: 31px;"></a>
@@ -121,6 +149,13 @@ getStats();
         <h2>Changelog</h2>
         <hr style="padding-bottom: 0;">
         <h3 style="padding-top: 10px; margin: 0;">9/7/24 @ 11:14pm</h3>
+<p style="padding: 0; margin: 0;">
+    > Removed old blog posts section <br>
+    > Added status cafe to my status section <br>
+    > Fixed the mini blog and how it displays <br>
+    > Tried dealing with responsiveness a tiny bit
+</p>
+<h3 style="padding-top: 10px; margin: 0;">9/7/24 @ 11:14pm</h3>
 <p style="padding: 0; margin: 0;">
     > Trying to make follow button
 </p>
@@ -185,18 +220,15 @@ getStats();
  
 
         </main>  
-        <aside id="rightSidebar" style="margin-left: 10px;">
+        <aside id="rightSidebar" style="margin-left: 10px; width: 18em;">
     <div style="text-align: center; padding: 0;" class="box">
         <h2 style="padding: 0; margin: 0; text-align: center;">status</h2>
         <sub style="padding: 0; margin: 0;">as of 9/7/24</sub>
-        <a href="https://www.imood.com/users/kdove"><img src="https://moods.imood.com/display/uname-kdove/fg-FFFFFF/trans-1/imood.gif" alt="The current mood of kdove at www.imood.com"></a>
-        <hr style="margin-left: 10px;">
-        <img src="https://88by31.neocities.org/web/online.gif" alt="status online" style="width: 88px; height: 31px; margin: 10px;">
+        <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content"></div></div><script src="https://status.cafe/current-status.js?name=kdove" defer></script>
     </div>
-    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28" style="padding-top: 10px; padding-left: 20px;"></iframe>
-    <div style="margin-top: 10px; text-align: center; padding: 0;" class="box">
-        <h2>chat</h2>
-        <iframe src="https://www3.cbox.ws/box/?boxid=3540576&boxtag=luCzlt" style="margin-left: 10px;margin-bottom: 10px;padding: 0; border-radius: 1em; width: 10.5em;" width="100%" height="200em" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28" style="padding-top: 10px; margin-left: 20%;"></iframe>
+    <div style="margin-top: 10px; text-align: center; padding: 10px;" class="box">
+        <iframe src='https://iframe.chat/embed/index.html?chat=81518763' id='chattable' frameborder='none' width="100%" height="300px" margin="50px"></iframe>
     </div>
     <div class="box" style="margin-top: 10px; height: 290px; text-align: center;">
         <h3>stats</h3>
@@ -209,11 +241,13 @@ getStats();
     <div class="box" style="margin-top: 10px; height: 140px;">
         <h3>to do</h3>
         <ul style="padding-left: 10px; margin-top: 5px;">
+            <li id="item">fix responsiveness for mobile viewing</li>
+            <li id="item">add a functioning online indicator</li>
             <li id="item">make more pages like uses page or feed page or something</li>
             <li id="item">make about page better</li>
             <li id="item">write a legit blog post</li>
             <li id="item">make sections for your blog posts</li>
-            <li id="item">make a credits page or section on homepage</li>
+            <li id="item"><s>ake a credits page or section on homepage</s>m</li>
             <li id="item"><s>make a website updates section</s></li>
             <li id="item"><s>actually make stuff on the about page :)</s></li>
             <li id="item"><s>make links and yellow text glowy</s></li>

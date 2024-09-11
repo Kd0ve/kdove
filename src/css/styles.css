@@ -54,6 +54,7 @@ body {
 }
 
 a {
+    color: var(--link-color);
     text-shadow: #EEEE00 0 0 5px;
 }
 
@@ -254,6 +255,18 @@ code {
     padding: 1px 4px;
 }
 
+#statuscafe {
+    padding: .5em;
+    background-color: rgb(0, 0, 0);
+    margin: 10px;
+}
+#statuscafe-username {
+    margin-bottom: .5em;
+}
+#statuscafe-content {
+    margin: 0 1em 0.5em 1em;
+}
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic);
 blockquote{
   font-size: 1.4em;
@@ -328,7 +341,7 @@ td {
     border-radius: 1em;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 880px) {
     #flex {
         flex-wrap: wrap;
     }
@@ -343,14 +356,26 @@ feel free to play around with the order!
 */
     main {
         order: 1;
+        width: 100%;
     }
 
     #leftSidebar {
         order: 2;
+        width: 100%;
+    }
+
+    .box {
+        width: 100%;
+    }
+
+    #mini-blog {
+        height: 500px;
+        overflow-y: scroll;
     }
 
     #rightSidebar {
         order: 3;
+        width: 100%;
     }
 
     #navbar ul {

@@ -1,4 +1,60 @@
-<aside id="leftSidebar" style="margin-right: 10px; width: 15em">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/styles.css">
+<title>First Blog Post</title>
+<script>
+    // this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
+                        
+let username = "kdove"; // UNLESS YOU HAVE A CUSTOM DOMAIN, Put your Nekoweb username here as a string
+
+if (username === undefined && window.location.href.includes(".nekoweb.org")) {
+  // if we know the site has a subdomain, we can use that as the username instead
+  username = window.location.host.split(".")[0];
+}
+
+const getStats = async () => {
+    const request = await fetch(`https://nekoweb.org/api/site/info/${username}`);
+    const json = await request.json();
+
+    const updated = new Date(json.updated_at).toLocaleDateString(); // Formats Last Updated text
+    const created = new Date(json.created_at).toLocaleDateString(); // Formats Creation Date text
+
+    document.getElementById("created").innerHTML = `<em>Created</em>: ${created}`;
+    document.getElementById("updated").innerHTML = `<em>Updated</em>: ${updated}`;
+    document.getElementById("visitors").innerHTML = `<em>Visits</em>: ${json.views}`;
+    document.getElementById("followers").innerHTML = `<em>Followers</em>: ${json.followers}`;
+};
+getStats();
+</script>
+<script src="https://chattable.neocities.org/scripts/main.min.js"></script>
+<script>
+	chattable.initialize({
+		stylesheet : "../css/chattable.css",
+	});
+</script>
+</head>
+<body>
+
+    <div id="container">
+        <div id="headerArea">
+    <div id="topbar"><marquee direction="left">WELCOME TO MY BRAIN</marquee></div>
+    <div id="header"><h1 style="text-align: center; color: white; font-size: 50px; padding-top: 10px;">kove's home</h1></div>
+    <nav id="navbar">
+        <ul>
+            <li><a href="/">home</a></li>
+            
+            <li><a href="/pages/about/">about</a></li>
+            
+            <li><a href="/pages/blog/">blog</a></li>
+            
+        </ul>
+    </nav>
+</div>
+        <div id="flex">
+            <aside id="leftSidebar" style="margin-right: 10px; width: 15em">
     <div style="padding: 10px;" id="mini-blog" class="box">
         <h2 style="text-align: center;">Mini Blog</h2>
         <hr>
@@ -78,4 +134,49 @@
         <a href="https://max.nekoweb.org/"><img src="https://max.nekoweb.org/images/button.png" alt="max's apartment"style="width: 88px; height: 31px;"></a>
         <a href="https://xtract.dev/"><img src="https://xtract.dev/buttons/button_space.png" alt="xtract's space"style="width: 88px; height: 31px;"></a>
     </div>
-</aside>
+</aside> 
+            <main>
+                
+                
+    
+            </main>   
+            <aside id="rightSidebar" style="margin-left: 10px; width: 18em;">
+    <div style="text-align: center; padding: 0;" class="box">
+        <h2 style="padding: 0; margin: 0; text-align: center;">status</h2>
+        <sub style="padding: 0; margin: 0;">as of 9/7/24</sub>
+        <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content"></div></div><script src="https://status.cafe/current-status.js?name=kdove" defer></script>
+    </div>
+    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28" style="padding-top: 10px; margin-left: 20%;"></iframe>
+    <div style="margin-top: 10px; text-align: center; padding: 10px;" class="box">
+        <iframe src='https://iframe.chat/embed/index.html?chat=81518763' id='chattable' frameborder='none' width="100%" height="300px" margin="50px"></iframe>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 290px; text-align: center;">
+        <h3>stats</h3>
+        <p id="created"></p>
+        <p id="updated"></p>
+        <p id="visitors"></p>
+        <p style="padding-bottom: 0; margin-bottom: 0; text-align: center;">Thank you Max!</p>
+        <a href="https://max.nekoweb.org/"><img src="https://max.nekoweb.org/images/button.png" alt="max's apartment" style="width: 88px; height: 31px;"></a>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 140px;">
+        <h3>to do</h3>
+        <ul style="padding-left: 10px; margin-top: 5px;">
+            <li id="item">fix responsiveness for mobile viewing</li>
+            <li id="item">add a functioning online indicator</li>
+            <li id="item">make more pages like uses page or feed page or something</li>
+            <li id="item">make about page better</li>
+            <li id="item">write a legit blog post</li>
+            <li id="item">make sections for your blog posts</li>
+            <li id="item"><s>ake a credits page or section on homepage</s>m</li>
+            <li id="item"><s>make a website updates section</s></li>
+            <li id="item"><s>actually make stuff on the about page :)</s></li>
+            <li id="item"><s>make links and yellow text glowy</s></li>
+            <li id="item"><s>add buttons/make my own button (add buttons of people who inspired site/helped)</s></li>
+        </ul>
+    </div>
+</aside> 
+        </div>
+        <footer id="footer" style="margin-top: 10px;">kdove | &#169;copyright 2024</footer>
+    </div>
+</body>
+</html>

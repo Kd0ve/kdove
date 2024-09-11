@@ -25,4 +25,10 @@ const getStats = async () => {
     document.getElementById("followers").innerHTML = `<em>Followers</em>: ${json.followers}`;
 };
 getStats();
-  </script>
+</script>
+<script src="https://chattable.neocities.org/scripts/main.min.js"></script>
+<script>
+	chattable.initialize({
+		stylesheet : "../css/chattable.css",
+	});
+</script>
