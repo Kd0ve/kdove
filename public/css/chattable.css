@@ -1,0 +1,21 @@
+body {
+    color: white;
+}
+
+a {
+    color: #ffef93;
+    text-shadow: #EEEE00 0 0 5px;
+}
+
+.senderInfo {
+    color: #704ca2;
+}
+
+#top_banner {
+    background: #704ca2;
+}
+
+#textInput {
+    color: black;
+    background: white;
+}
