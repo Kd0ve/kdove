@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/styles.css">
+<title>Portswigger Academy Day Two</title>
+<script>
+    // this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
+                        
+let username = "kdove"; // UNLESS YOU HAVE A CUSTOM DOMAIN, Put your Nekoweb username here as a string
+
+if (username === undefined && window.location.href.includes(".nekoweb.org")) {
+  // if we know the site has a subdomain, we can use that as the username instead
+  username = window.location.host.split(".")[0];
+}
+
+const getStats = async () => {
+    const request = await fetch(`https://nekoweb.org/api/site/info/${username}`);
+    const json = await request.json();
+
+    const updated = new Date(json.updated_at).toLocaleDateString(); // Formats Last Updated text
+    const created = new Date(json.created_at).toLocaleDateString(); // Formats Creation Date text
+
+    document.getElementById("created").innerHTML = `<em>Created</em>: ${created}`;
+    document.getElementById("updated").innerHTML = `<em>Updated</em>: ${updated}`;
+    document.getElementById("visitors").innerHTML = `<em>Visits</em>: ${json.views}`;
+    document.getElementById("followers").innerHTML = `<em>Followers</em>: ${json.followers}`;
+};
+getStats();
+  </script>
+</head>
+<body>
+
+    <div id="container">
+        <div id="headerArea">
+    <div id="topbar"><marquee direction="left">WELCOME TO MY BRAIN</marquee></div>
+    <div id="header"><h1 style="text-align: center; color: white; font-size: 50px; padding-top: 10px;">kove's home</h1></div>
+    <nav id="navbar">
+        <ul>
+            <li><a href="/">home</a></li>
+            
+            <li><a href="/pages/blog/">blog</a></li>
+            
+            <li><a href="/pages/about/">about</a></li>
+            
+        </ul>
+    </nav>
+</div>
+        <div id="flex">
+            <aside id="leftSidebar" style="margin-right: 10px; width: 20em">
+    <div style="padding: 10px;" class="box">
+        <h2 style="text-align: center;">Mini Blog</h2>
+        <hr>
+        <div>
+            <p>> 9/7/24 @ 8:50pm</p>
+            <p>
+                Good news, I got almost everything for the end of this term done! I was able to focus for a little bit. But it feels like the days just disappear lately. I really want to start waking up sooner.
+                <br><br>
+                Also, if anyone has any suggestions for ways I can embed like a mini blog feed or something, or what to use, that would be awesome. I'm signing up for status.cafe for the statuses bar since I like it more than the imoods thing. And I can be more detailed.
+                <br><br>
+                But I want a mini blog for this sidebar section of the website. I heard of smol.pub, but I'm not sure if that's really for what I want. Cause I want to make tiny little statuses like these where I talk to myself, so it wouldn't really be whole entire blog posts. Just little blurbs? idk lol.
+                <br><br>
+                Anyway, I just found Spacehey and have been having a lot of fun with it. I treid to theme it after my website a bit. But there's a lot of people on there with a lot of stuff going on so it's a bit overwhelming idk. I will see how I like it.
+            </p>
+        </div>
+        <div hidden>
+            <p>> 9/7/2024 @ 2:00pm</p>
+            <p>
+                I told myself I wouldn't hyperfixate on this today and I'd get work done, but here we are lol.
+                <br><br>
+                I mean I'm not entirely surprised. I've never had the best control over it. It feels more like obsession rather than hyperfixation, but I guess that's how it can feel when it gets to be a lot. 
+                <br><br>
+                I just really love making this thing. It's the first time I've made a website I felt this proud of. I've always dreamed of doing web development and actually being able to make something like this, but I had kinda given up on being able to do that at some point.
+                <br><br>
+                There's still a lot I need to do, but I really do have to do at least some sort of work today. I really hope I can get myself to focus on what I need to do. Signing off ~
+            </p>
+        </div>
+        <div hidden>
+            <p>> 9/7/2024 @ like midnight</p>
+            <p>
+                Adding a sidebar here. I don't think this is going to be what it stays as, but for now this will be my braindump spot. The updates section will be just little bits when I actually change something on the site. Maybe change it over to taking github pushes? I'll have to figure that out.
+                <br><br>
+                Today I did a lot. I switched over to atabook for my guestbook stuff. I also changed my chatbox to be dark like the rest of my theme. I was thinking it, but someone pointed it out so I figured I'd just go ahead and do it.
+                <br><br>
+                I also want to add more buttons and blinkies. There's just a hundred bajillion things I want to do. Plus I have school work I've put off all week that I probably could've had done by now ;-;
+                <br><br>
+                It's pretty late right now and I got literally nothing done today other than this :) I'm going to try to turn my brain off. Signing off ~
+            </p>
+        </div>
+    </div>
+    <div style="padding: 10px; height: 200px;;overflow-y: scroll; scrollbar-color: rgb(255, 255, 255);" class="box">
+        <h2 style="text-align: center;">Cool Sites</h2>
+        <hr>
+        <a href="https://virtualobserver.moe/"><img src="https://virtualobserver.moe/images/sitebutton.png"style="width: 88px; height: 31px;"></a>
+        <a href="https://bekianee.nekoweb.org" target="_blank"><img src="https://bekianee.nekoweb.org/Images/Bekianee_button.png" style="width: 88px; height: 31px;"></a>
+        <a href="https://alheli.nekoweb.org/"><img src="https://alheli.nekoweb.org/images/alheli-button.png"style="width: 88px; height: 31px;"></a>
+        <a href="https://nepeta.pet"><img src="https://nepeta.pet/pics/nepeta-v1/buttons/button.gif" alt="nepta's button"style="width: 88px; height: 31px;"></a>
+        <a href="https://madewithrealsugar.neocities.org"><img src="https://byte.nekoweb.org/stamps/madewithrealsugar.gif"style="width: 88px; height: 31px;"></a>
+        <a href="https://ultrakill.nekoweb.org"> <img src="https://ultrakill.nekoweb.org/ultrakillinmene.png" title="ultrakill on nekoweb" style="width: 88px; height: 31px;"alt="a person with purple hair sits beside white text saying 'ultrakill'"> </a>
+        <a href="https://penguinjaa.com/" target="_blank"><img src="https://penguinjaa.com/images/buttons/neopenguinjaa.gif"style="width: 88px; height: 31px;"></a>
+        <a href="https://joosh.nekoweb.org/" target="_blank"><img src="https://joosh.nekoweb.org/img/icon.gif"style="width: 88px; height: 31px;"></a>
+        <a href="https://july.lol"><img src="https://july.lol/img/lonelyjulybutton.gif" alt="july.lol" style="width: 88px; height: 31px;"></a>
+        <a href="https://dimden.dev/"><img src="https://dimden.dev/services/images/88x31.gif"style="width: 88px; height: 31px;"></a>
+        <a href="https://medjed.nekoweb.org/"><img src="https://medjed.nekoweb.org/images/button.jpg"style="width: 88px; height: 31px;"></a>
+        <a href="https://max.nekoweb.org/"><img src="https://max.nekoweb.org/images/button.png" alt="max's apartment"style="width: 88px; height: 31px;"></a>
+        <a href="https://xtract.dev/"><img src="https://xtract.dev/buttons/button_space.png" alt="xtract's space"style="width: 88px; height: 31px;"></a>
+    </div>
+</aside> 
+            <main>
+                
+                <hr>
+<p>Today is my second day going through the PortSwigger Academy learning paths! We're continuing with the Server-side Vulnerabilities pathway, where we will finish up with OS Command Injection and SQL Injection.</p>
+<hr>
+<h2>OS Command Injection</h2>
+<p>This is a shell attack that allows the execution of OS commands, which can be used to fully compromise a system running the application at hand.</p>
+<p>It also gives an avenue for potentially changing internal permissions, allowing for higher privileges within the system than you may have initially been able to gain access to.</p>
+<h3>Useful Commands</h3>
+<p>Here are some useful commands to execute to help identify there being an OS command injection vulnerability:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Purpose of command</strong></th>
+<th><strong>Linux</strong></th>
+<th><strong>Windows</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name of current user</td>
+<td><code>whoami</code></td>
+<td><code>whoami</code></td>
+</tr>
+<tr>
+<td>Operating system</td>
+<td><code>uname -a</code></td>
+<td><code>ver</code></td>
+</tr>
+<tr>
+<td>Network configuration</td>
+<td><code>ifconfig</code></td>
+<td><code>ipconfig /all</code></td>
+</tr>
+<tr>
+<td>Network connections</td>
+<td><code>netstat -an</code></td>
+<td><code>netstat -an</code></td>
+</tr>
+<tr>
+<td>Running processes</td>
+<td><code>ps -ef</code></td>
+<td><code>tasklist</code></td>
+</tr>
+</tbody>
+</table>
+<h3>Injecting OS Commands</h3>
+<p>Being able to execute these is like an SQL injection. In the URL, often a parameter will be established to be set to an input variable.</p>
+<p>You can exploit this by doing something like <code>&amp; echo aiwefwlguh &amp;</code> which will make the system execute the <code>echo</code> command and echo the specified string.</p>
+<p>This is a good way to test if OS Command Injection is a possible vulnerability that can be exploited.</p>
+<h3>OS Command Injection, Simple Case</h3>
+<p>This lab had us do something that wasn't shown in the instructions beforehand. Rather than doing something like <code>&amp; whoami &amp;</code>, the lab wanted the input to be <code>| whoami</code> put after the input storeID.</p>
+<p>I'm assuming they wanted us to look up other ways to do the injection, but it's kind of weird they show one way to do the injection method, but have us physically do a different method.</p>
+<p>Anyway, the result looked like <code>productId=1&amp;storeId=1 | whoami</code> which outputs the name of the user.</p>
+<hr>
+<h2>SQL Injection</h2>
+<p>I referred to this earlier because I'm relatively familiar with SQL injections. This type of vulnerability takes advantage of a website using an SQL database where input isn't filtered.</p>
+<p>If there is an input form where the results are passed to an SQL query, there are times when you can put in an SQL command with some slight character manipulation, and it will pass the query as an actual SQL query.</p>
+<p>According to the course material, SQL injections can allow for DDoS attacks, which I was not aware of and find very interesting.</p>
+<h3>Detect SQL Injection</h3>
+<p>According to Portswigger, the following are methods that can be used to test for the potential of an SQL injection being possible:</p>
+<blockquote>
+<ul>
+<li>The single quote character ' and look for errors or other anomalies.</li>
+<li>Some SQL-specific syntax that evaluates the base (original) value of the entry point, and to a different value, and looks for systematic differences in the application responses.</li>
+<li>Boolean conditions such as OR 1=1 and OR 1=2 and look for differences in the application's responses.</li>
+<li>Payloads designed to trigger time delays when executed within a SQL query and look for differences in the time taken to respond.</li>
+<li>OAST payloads are designed to trigger an out-of-band network interaction when executed within a SQL query and monitor any resulting interactions.</li>
+</ul>
+</blockquote>
+<h3>Retrieving Hidden Data</h3>
+<p>Doing some tests such as '+OR+1=1 at the end of a URL performing an SQL query can result in the dropping of an entire database, even hidden elements.</p>
+<p>Portswigger gives the following warning, which I think is important to remember:</p>
+<blockquote>
+<p><strong>Warning</strong></p>
+<p>Take care when injecting the condition OR 1=1 into an SQL query. Even if it appears to be harmless in the context you're injecting into, it's common for applications to use data from a single request in multiple different queries. If your condition reaches an UPDATE or DELETE statement, for example, it can result in an accidental loss of data.</p>
+</blockquote>
+<h3>SQL Injection Lab</h3>
+<p>This one was straightforward. You just did the '+OR+1=1-- that was talked about earlier in the learning and it dropped all the products.</p>
+<h3>Subverting Application Logic</h3>
+<p>This one is cool. You can try to subvert the SQL logic that is written out by inserting certain test characters into certain fields.</p>
+<p>For example, if you wanted to log in as a user without needing to provide a password, and the SQL logic looked like <code>SELECT * FROM users WHERE username = 'user' AND password = 'pass'</code> if you just put in <code>user'--</code> into the username field, it would allow you to bypass the password check.</p>
+<h3>Subverting Application Logic Lab</h3>
+<p>I got kind of confused here because I thought you had to leave the password field blank, but when you would do that the submission thing would freak out.</p>
+<p>What you had to do was input a password and then alter the username to have <code>'--</code> at the end, which would then make the password field blank and not necessary to log in.</p>
+<hr>
+<p>That's all for day two! And that is the end of the Server-side Exploitation path. Next time, I'll be moving onto the API testing pathway, where I'll learn about how to exploit API.</p>
+<p>Thank you all for reading, and I hope to continue providing my notes as I go along on these learning paths! They've been informative so far, and I feel like I am learning a lot.</p>
+
+    
+            </main>   
+            <aside id="rightSidebar" style="margin-left: 10px;">
+    <div style="text-align: center; padding: 0;" class="box">
+        <h2 style="padding: 0; margin: 0; text-align: center;">status</h2>
+        <sub style="padding: 0; margin: 0;">as of 9/7/24</sub>
+        <a href="https://www.imood.com/users/kdove"><img src="https://moods.imood.com/display/uname-kdove/fg-FFFFFF/trans-1/imood.gif" alt="The current mood of kdove at www.imood.com"></a>
+        <hr style="margin-left: 10px;">
+        <img src="https://88by31.neocities.org/web/online.gif" alt="status online" style="width: 88px; height: 31px; margin: 10px;">
+    </div>
+    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28" style="padding-top: 10px; padding-left: 20px;"></iframe>
+    <div style="margin-top: 10px; text-align: center; padding: 0;" class="box">
+        <h2>chat</h2>
+        <iframe src="https://www3.cbox.ws/box/?boxid=3540576&boxtag=luCzlt" style="margin-left: 10px;margin-bottom: 10px;padding: 0; border-radius: 1em; width: 10.5em;" width="100%" height="200em" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 290px; text-align: center;">
+        <h3>stats</h3>
+        <p id="created"></p>
+        <p id="updated"></p>
+        <p id="visitors"></p>
+        <p style="padding-bottom: 0; margin-bottom: 0; text-align: center;">Thank you Max!</p>
+        <a href="https://max.nekoweb.org/"><img src="https://max.nekoweb.org/images/button.png" alt="max's apartment" style="width: 88px; height: 31px;"></a>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 140px;">
+        <h3>to do</h3>
+        <ul style="padding-left: 10px; margin-top: 5px;">
+            <li id="item">make more pages like uses page or feed page or something</li>
+            <li id="item">make about page better</li>
+            <li id="item">write a legit blog post</li>
+            <li id="item">make sections for your blog posts</li>
+            <li id="item">make a credits page or section on homepage</li>
+            <li id="item"><s>make a website updates section</s></li>
+            <li id="item"><s>actually make stuff on the about page :)</s></li>
+            <li id="item"><s>make links and yellow text glowy</s></li>
+            <li id="item"><s>add buttons/make my own button (add buttons of people who inspired site/helped)</s></li>
+        </ul>
+    </div>
+</aside> 
+        </div>
+        <footer id="footer" style="margin-top: 10px;">kdove | &#169;copyright 2024</footer>
+    </div>
+</body>
+</html>

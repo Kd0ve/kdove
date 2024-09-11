@@ -1,0 +1,373 @@
+:root {
+    --header-image: url('https://sadhost.neocities.org/images/layouts/wp.jpeg');
+    --body-bg-image: url('https://sadhost.neocities.org/images/tiles/purplesky.gif');
+    --link-color: #ffef93;
+
+    /* colors */
+    --content: #43256E;
+}
+
+/* font family stuff */
+@font-face {
+    font-family: 'ByteBounce';
+    src: url('ByteBounce.ttf') format('woff2'),url('ByteBounce.ttf') format('ttf'); 
+}
+
+@font-face {
+    font-family: 'ByteBounce';
+    src: url('ByteBounce.ttf') format('woff2'),url('ByteBounce.ttf') format('ttf');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'ByteBounce';
+    src: url('ByteBounce.ttf') format('woff2'),url('ByteBounce.ttf') format('ttf');
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'ByteBounce';
+    src: url('ByteBounce.ttf') format('woff2'),url('ByteBounce.ttf') format('ttf');
+    font-style: italic;
+    font-weight: bold;
+}
+
+
+html, body {
+    min-height: 100% !important;
+    height: 100%;
+}
+
+body {
+    font-family: "ByteBounce", "Lucida Console", monospace, Monaco; 
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    background-image: url('../assets/stars5.gif');
+    background-repeat: repeat;
+    /* you can delete the line below if you'd prefer to not use an image */
+    color: #fceaff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-shadow: #EEEE00 0 0 5px;
+}
+
+a:hover {
+    color: #b3a768;
+    text-decoration: underline;
+}
+
+#container {
+    max-width: 1400px;
+    /* this is the width of your layout! */
+    /* if you change the above value, scroll to the bottom
+and change the media query according to the comment! */
+    margin: 0 auto;
+    /* this centers the entire page */
+    background:#43256E;
+    padding: 0 10px;
+    min-height: 100vh;
+    border-left: 3px dashed white;
+    border-right: 3px dashed white;
+}
+
+#container a {
+    color: var(--link-color);
+    text-shadow: 0.5em;
+    font-weight: bold;
+    /* if you want to remove the underline
+you can add a line below here that says:
+text-decoration:none; */
+}
+
+#container a:hover {
+    color: #b3a768;
+}
+
+
+#header {
+    width: 100%;
+    border: 1px solid white;
+    /* header color here! */
+    height: 150px;
+    /* this is only for a background image! */
+    /* if you want to put images IN the header, 
+you can add them directly to the <div id="header"></div> element! */
+    background-color: #000000;
+    background-image: url(../assets/anisnow.gif);
+    background-repeat: repeat;
+}
+
+
+/* navigation section!! */
+#navbar {
+    height: 40px;
+    /* navbar color */
+    width: 100%;
+}
+
+#navbar ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    justify-content: space-evenly;
+}
+
+#navbar li {
+    padding-top: 10px;
+}
+
+/* navigation links*/
+#navbar li a {
+    color: var(--link-color);
+    text-shadow: 5% 5%;
+    /* navbar text color */
+    font-weight: 800;
+    text-decoration: none;
+    /* this removes the underline */
+}
+
+/* navigation link when a link is hovered over */
+#navbar li a:hover {
+    color: #b3a768;
+    text-decoration: underline;
+}
+
+#flex {
+    display: flex;
+}
+
+aside {
+    width: 200px;
+    font-size: smaller;
+    /* this makes the sidebar text slightly smaller */
+}
+
+
+/* this is the color of the main content area,
+between the sidebars! */
+main {
+    border: 1px solid white;
+    flex: 1;
+    padding: 20px;
+    order: 2;
+    background-color:#00000073;
+}
+
+
+.content {
+    border: 1px solid white;
+    overflow-y: scroll;
+    scrollbar-color: black;
+    background-color: #000000;
+}
+
+#leftSidebar {
+    order: 1;
+}
+
+#rightSidebar {
+    order: 3;
+}
+
+footer {
+    /* background color for footer */
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    text-align: center;
+    /* this centers the footer text */
+}
+
+h1,
+h2,
+h3 {
+    color: #B766FF;
+}
+
+h1 {
+    font-size: 35px;
+}
+
+h2 {
+    margin: 5px;
+    font-size: 30px;
+}
+
+h3 {
+    margin: 5px;
+    font-size: 25px;
+}
+
+p {
+    font-size: 22px;
+}
+
+a, li {
+    text-decoration: none;
+    font-size: 20px;
+}
+
+sub {
+    font-size: 18px;
+}
+
+/* this is just a cool box, it's the darker colored one */
+.box {
+    border: 1px solid white;
+    padding: 10px;
+    overflow-y: scroll;
+    background-color: #000000;
+    scrollbar-color: black;
+    border-radius: 1em;
+}
+
+#item {
+    padding-top: 5px;
+}
+/* CSS for extras */
+
+#topBar {
+    width: 100%;
+    height: 30px;
+    padding: 10px;
+    margin: 0;
+    font-size: smaller;
+    background-color: #13092D;
+}
+
+img {
+    width: 80%;
+}
+
+code {
+    font-family: "ByteBounce", "Lucida Console", monospace, Monaco;
+    background-color: #272822;
+    color: #f8f8f2;
+    border-radius: 0.2em;
+    padding: 1px 4px;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic);
+blockquote{
+  font-size: 1.4em;
+  width:60%;
+  margin:50px auto;
+  font-family:Open Sans;
+  font-style:italic;
+  color: #ffffff;
+  padding:1.2em 30px 1.2em 75px;
+  border-left:8px solid #333333 ;
+  line-height:1.6;
+  position: relative;
+  background:#141414;
+}
+
+blockquote::before{
+  font-family:Arial;
+  content: "\201C";
+  color:#5a5a5a;
+  font-size:4em;
+  position: absolute;
+  left: 10px;
+  top:-10px;
+}
+
+blockquote::after{
+  content: '';
+}
+
+blockquote span{
+  display:block;
+  color:#333333;
+  font-style: normal;
+  font-weight: bold;
+  margin-top:1em;
+}
+
+pre > code {
+	display: block;
+	background: #252525;
+	padding: 1em;
+	border-radius: 0.33em;
+}
+
+thead {
+	background-color: #333;
+	color: white;
+	font-size: 0.875rem;
+	text-transform: uppercase;
+	letter-spacing: 2%;
+}
+
+td {
+    padding:5px;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 1em;
+}
+
+::-webkit-scrollbar-track {
+    background: black;
+    border-radius: 1em;
+    margin: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255);
+    border: rgb(0, 0, 0) 1px solid;
+    border-radius: 1em;
+}
+
+@media only screen and (max-width: 800px) {
+    #flex {
+        flex-wrap: wrap;
+    }
+
+    aside {
+        width: 100%;
+    }
+
+    /* the order of the items is adjusted here for responsiveness!
+since the sidebars would be too small on a mobile device.
+feel free to play around with the order!
+*/
+    main {
+        order: 1;
+    }
+
+    #leftSidebar {
+        order: 2;
+    }
+
+    #rightSidebar {
+        order: 3;
+    }
+
+    #navbar ul {
+        flex-wrap: wrap;
+    }
+}
+
+.crt::before {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+}

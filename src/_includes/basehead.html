@@ -1,0 +1,28 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/styles.css">
+<title>{{title}}</title>
+<script>
+    // this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
+                        
+let username = "kdove"; // UNLESS YOU HAVE A CUSTOM DOMAIN, Put your Nekoweb username here as a string
+
+if (username === undefined && window.location.href.includes(".nekoweb.org")) {
+  // if we know the site has a subdomain, we can use that as the username instead
+  username = window.location.host.split(".")[0];
+}
+
+const getStats = async () => {
+    const request = await fetch(`https://nekoweb.org/api/site/info/${username}`);
+    const json = await request.json();
+
+    const updated = new Date(json.updated_at).toLocaleDateString(); // Formats Last Updated text
+    const created = new Date(json.created_at).toLocaleDateString(); // Formats Creation Date text
+
+    document.getElementById("created").innerHTML = `<em>Created</em>: ${created}`;
+    document.getElementById("updated").innerHTML = `<em>Updated</em>: ${updated}`;
+    document.getElementById("visitors").innerHTML = `<em>Visits</em>: ${json.views}`;
+    document.getElementById("followers").innerHTML = `<em>Followers</em>: ${json.followers}`;
+};
+getStats();
+  </script>

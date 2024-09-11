@@ -1,0 +1,12 @@
+<div id="headerArea">
+    <div id="topbar"><marquee direction="left">WELCOME TO MY BRAIN</marquee></div>
+    <div id="header"><h1 style="text-align: center; color: white; font-size: 50px; padding-top: 10px;">kove's home</h1></div>
+    <nav id="navbar">
+        <ul>
+            <li><a href="/">home</a></li>
+            {% for page in collections.page %}
+            <li><a href="{{page.url}}">{{page.data.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </nav>
+</div>

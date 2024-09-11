@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/styles.css">
+<title>about</title>
+<script>
+    // this script is under the MIT license (https://max.nekoweb.org/resources/license.txt)
+                        
+let username = "kdove"; // UNLESS YOU HAVE A CUSTOM DOMAIN, Put your Nekoweb username here as a string
+
+if (username === undefined && window.location.href.includes(".nekoweb.org")) {
+  // if we know the site has a subdomain, we can use that as the username instead
+  username = window.location.host.split(".")[0];
+}
+
+const getStats = async () => {
+    const request = await fetch(`https://nekoweb.org/api/site/info/${username}`);
+    const json = await request.json();
+
+    const updated = new Date(json.updated_at).toLocaleDateString(); // Formats Last Updated text
+    const created = new Date(json.created_at).toLocaleDateString(); // Formats Creation Date text
+
+    document.getElementById("created").innerHTML = `<em>Created</em>: ${created}`;
+    document.getElementById("updated").innerHTML = `<em>Updated</em>: ${updated}`;
+    document.getElementById("visitors").innerHTML = `<em>Visits</em>: ${json.views}`;
+    document.getElementById("followers").innerHTML = `<em>Followers</em>: ${json.followers}`;
+};
+getStats();
+  </script>
+</head>
+<body>
+
+<div id="container">
+
+    <div id="headerArea">
+    <div id="topbar"><marquee direction="left">WELCOME TO MY BRAIN</marquee></div>
+    <div id="header"><h1 style="text-align: center; color: white; font-size: 50px; padding-top: 10px;">kove's home</h1></div>
+    <nav id="navbar">
+        <ul>
+            <li><a href="/">home</a></li>
+            
+            <li><a href="/pages/blog/">blog</a></li>
+            
+            <li><a href="/pages/about/">about</a></li>
+            
+        </ul>
+    </nav>
+</div>
+    <div id="flex">
+        <aside id="leftSidebar" style="margin-right: 10px; width: 20em">
+    <div style="padding: 10px;" class="box">
+        <h2 style="text-align: center;">Mini Blog</h2>
+        <hr>
+        <div>
+            <p>> 9/7/24 @ 8:50pm</p>
+            <p>
+                Good news, I got almost everything for the end of this term done! I was able to focus for a little bit. But it feels like the days just disappear lately. I really want to start waking up sooner.
+                <br><br>
+                Also, if anyone has any suggestions for ways I can embed like a mini blog feed or something, or what to use, that would be awesome. I'm signing up for status.cafe for the statuses bar since I like it more than the imoods thing. And I can be more detailed.
+                <br><br>
+                But I want a mini blog for this sidebar section of the website. I heard of smol.pub, but I'm not sure if that's really for what I want. Cause I want to make tiny little statuses like these where I talk to myself, so it wouldn't really be whole entire blog posts. Just little blurbs? idk lol.
+                <br><br>
+                Anyway, I just found Spacehey and have been having a lot of fun with it. I treid to theme it after my website a bit. But there's a lot of people on there with a lot of stuff going on so it's a bit overwhelming idk. I will see how I like it.
+            </p>
+        </div>
+        <div hidden>
+            <p>> 9/7/2024 @ 2:00pm</p>
+            <p>
+                I told myself I wouldn't hyperfixate on this today and I'd get work done, but here we are lol.
+                <br><br>
+                I mean I'm not entirely surprised. I've never had the best control over it. It feels more like obsession rather than hyperfixation, but I guess that's how it can feel when it gets to be a lot. 
+                <br><br>
+                I just really love making this thing. It's the first time I've made a website I felt this proud of. I've always dreamed of doing web development and actually being able to make something like this, but I had kinda given up on being able to do that at some point.
+                <br><br>
+                There's still a lot I need to do, but I really do have to do at least some sort of work today. I really hope I can get myself to focus on what I need to do. Signing off ~
+            </p>
+        </div>
+        <div hidden>
+            <p>> 9/7/2024 @ like midnight</p>
+            <p>
+                Adding a sidebar here. I don't think this is going to be what it stays as, but for now this will be my braindump spot. The updates section will be just little bits when I actually change something on the site. Maybe change it over to taking github pushes? I'll have to figure that out.
+                <br><br>
+                Today I did a lot. I switched over to atabook for my guestbook stuff. I also changed my chatbox to be dark like the rest of my theme. I was thinking it, but someone pointed it out so I figured I'd just go ahead and do it.
+                <br><br>
+                I also want to add more buttons and blinkies. There's just a hundred bajillion things I want to do. Plus I have school work I've put off all week that I probably could've had done by now ;-;
+                <br><br>
+                It's pretty late right now and I got literally nothing done today other than this :) I'm going to try to turn my brain off. Signing off ~
+            </p>
+        </div>
+    </div>
+    <div style="padding: 10px; height: 200px;;overflow-y: scroll; scrollbar-color: rgb(255, 255, 255);" class="box">
+        <h2 style="text-align: center;">Cool Sites</h2>
+        <hr>
+        <a href="https://virtualobserver.moe/"><img src="https://virtualobserver.moe/images/sitebutton.png"style="width: 88px; height: 31px;"></a>
+        <a href="https://bekianee.nekoweb.org" target="_blank"><img src="https://bekianee.nekoweb.org/Images/Bekianee_button.png" style="width: 88px; height: 31px;"></a>
+        <a href="https://alheli.nekoweb.org/"><img src="https://alheli.nekoweb.org/images/alheli-button.png"style="width: 88px; height: 31px;"></a>
+        <a href="https://nepeta.pet"><img src="https://nepeta.pet/pics/nepeta-v1/buttons/button.gif" alt="nepta's button"style="width: 88px; height: 31px;"></a>
+        <a href="https://madewithrealsugar.neocities.org"><img src="https://byte.nekoweb.org/stamps/madewithrealsugar.gif"style="width: 88px; height: 31px;"></a>
+        <a href="https://ultrakill.nekoweb.org"> <img src="https://ultrakill.nekoweb.org/ultrakillinmene.png" title="ultrakill on nekoweb" style="width: 88px; height: 31px;"alt="a person with purple hair sits beside white text saying 'ultrakill'"> </a>
+        <a href="https://penguinjaa.com/" target="_blank"><img src="https://penguinjaa.com/images/buttons/neopenguinjaa.gif"style="width: 88px; height: 31px;"></a>
+        <a href="https://joosh.nekoweb.org/" target="_blank"><img src="https://joosh.nekoweb.org/img/icon.gif"style="width: 88px; height: 31px;"></a>
+        <a href="https://july.lol"><img src="https://july.lol/img/lonelyjulybutton.gif" alt="july.lol" style="width: 88px; height: 31px;"></a>
+        <a href="https://dimden.dev/"><img src="https://dimden.dev/services/images/88x31.gif"style="width: 88px; height: 31px;"></a>
+        <a href="https://medjed.nekoweb.org/"><img src="https://medjed.nekoweb.org/images/button.jpg"style="width: 88px; height: 31px;"></a>
+        <a href="https://max.nekoweb.org/"><img src="https://max.nekoweb.org/images/button.png" alt="max's apartment"style="width: 88px; height: 31px;"></a>
+        <a href="https://xtract.dev/"><img src="https://xtract.dev/buttons/button_space.png" alt="xtract's space"style="width: 88px; height: 31px;"></a>
+    </div>
+</aside>
+        <main>
+                
+<div class="content" style="padding: 10px; ">
+    <h1 style="text-align: center; text-decoration: underline;">Who is?</h1>
+    <p>Well that's a good question...</p>
+    <p>MY GO-TO INTRO: <br>
+        Hi! My name is < kat\kdove\whatever >, and I'm currently a student studying for a B.S. in Cybersecurity!</p>
+    <p>But that's kinda cheesy... and not really who I want to be here. I want to be myself. That's why I've made this place.</p>
+    <p>I've always had the want to build a website like this. Something I understood, something that was completely mine... and really felt like mine.</p>
+    <p>And it feels like I finally have! This place I built from the ground up. It's all mine, hand sewn bit by bit, or patchworked more like it, but mine all the same.<br>
+        I mean, that's the nature of these places. We build bits and pieces of ourselves from each other's creations. And I feel whole now that this longing to build
+        this thing is finally satiated. But now the problem is it's all I want to work on ;-;</p>
+    <p>
+        Anyway, enough being cheesy. I would love it if you would write in my <a href="https://kdove.nekoweb.org/pages/guestbook/">guestbook</a> and tell me about yourself!
+        Tell me why you're here and what brought you to love indie websites such as these. Thank you for taking the time to read this :)
+        <br>
+        <br>
+        (P.S. please share buttons and blinkies with me I beg of you I want to collect so many ;-;)
+    </p>
+</div>
+ 
+
+        </main>  
+        <aside id="rightSidebar" style="margin-left: 10px;">
+    <div style="text-align: center; padding: 0;" class="box">
+        <h2 style="padding: 0; margin: 0; text-align: center;">status</h2>
+        <sub style="padding: 0; margin: 0;">as of 9/7/24</sub>
+        <a href="https://www.imood.com/users/kdove"><img src="https://moods.imood.com/display/uname-kdove/fg-FFFFFF/trans-1/imood.gif" alt="The current mood of kdove at www.imood.com"></a>
+        <hr style="margin-left: 10px;">
+        <img src="https://88by31.neocities.org/web/online.gif" alt="status online" style="width: 88px; height: 31px; margin: 10px;">
+    </div>
+    <iframe src="https://nekoweb.org/frame/follow" frameborder="0" width="170" height="28" style="padding-top: 10px; padding-left: 20px;"></iframe>
+    <div style="margin-top: 10px; text-align: center; padding: 0;" class="box">
+        <h2>chat</h2>
+        <iframe src="https://www3.cbox.ws/box/?boxid=3540576&boxtag=luCzlt" style="margin-left: 10px;margin-bottom: 10px;padding: 0; border-radius: 1em; width: 10.5em;" width="100%" height="200em" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 290px; text-align: center;">
+        <h3>stats</h3>
+        <p id="created"></p>
+        <p id="updated"></p>
+        <p id="visitors"></p>
+        <p style="padding-bottom: 0; margin-bottom: 0; text-align: center;">Thank you Max!</p>
+        <a href="https://max.nekoweb.org/"><img src="https://max.nekoweb.org/images/button.png" alt="max's apartment" style="width: 88px; height: 31px;"></a>
+    </div>
+    <div class="box" style="margin-top: 10px; height: 140px;">
+        <h3>to do</h3>
+        <ul style="padding-left: 10px; margin-top: 5px;">
+            <li id="item">make more pages like uses page or feed page or something</li>
+            <li id="item">make about page better</li>
+            <li id="item">write a legit blog post</li>
+            <li id="item">make sections for your blog posts</li>
+            <li id="item">make a credits page or section on homepage</li>
+            <li id="item"><s>make a website updates section</s></li>
+            <li id="item"><s>actually make stuff on the about page :)</s></li>
+            <li id="item"><s>make links and yellow text glowy</s></li>
+            <li id="item"><s>add buttons/make my own button (add buttons of people who inspired site/helped)</s></li>
+        </ul>
+    </div>
+</aside>
+    </div>
+    <footer id="footer" style="margin-top: 10px;">kdove | &#169;copyright 2024</footer>
+</div>   
+</body>
+</html>

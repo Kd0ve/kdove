@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include "basehead.html" %}
+</head>
+<body>
+
+    <div id="container">
+        {% include "header.html" %}
+        <div id="flex">
+            {% include "leftsidebar.html" %} 
+            <main>
+                
+                {{ content | safe }}
+    
+            </main>   
+            {% include "rightsidebar.html" %} 
+        </div>
+        <footer id="footer" style="margin-top: 10px;">kdove | &#169;copyright 2024</footer>
+    </div>
+</body>
+</html>
